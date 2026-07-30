@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Shield, Terminal as TerminalIcon, Menu, X, Lock, Activity } from 'lucide-react';
 import { PROFILE } from '../data/portfolioData';
+import yashProfileImg from '../assets/yash-profile.jpg';
 
 export default function Navbar({ onOpenTerminal }) {
   const [scrolled, setScrolled] = useState(false);
@@ -32,7 +33,7 @@ export default function Navbar({ onOpenTerminal }) {
         {/* Brand Logo & Profile Avatar */}
         <a href="#hero" className="flex items-center gap-3 group">
           <div className="relative w-10 h-10 rounded-xl overflow-hidden border border-emerald-500/40 group-hover:border-emerald-400 group-hover:shadow-[0_0_15px_rgba(16,185,129,0.4)] transition-all bg-slate-900 shrink-0">
-            <img src="/yash-profile.jpg" alt="Yash Portfolio" className="w-full h-full object-cover object-top" />
+            <img src={yashProfileImg} alt="Yash Portfolio" className="w-full h-full object-cover object-top" />
           </div>
           <div>
             <div className="flex items-center gap-2">

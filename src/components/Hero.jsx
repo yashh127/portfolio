@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Shield, Terminal, ArrowRight, Lock, Activity, Server, Cpu, CheckCircle2, Award } from 'lucide-react';
 import { PROFILE } from '../data/portfolioData';
+import yashProfileImg from '../assets/yash-profile.jpg';
 
 export default function Hero({ onOpenTerminal, onOpenPGP }) {
   const [textIndex, setTextIndex] = useState(0);
@@ -120,7 +121,7 @@ export default function Hero({ onOpenTerminal, onOpenPGP }) {
                 {/* Profile Image Frame */}
                 <div className="relative rounded-xl overflow-hidden border border-slate-700/80 aspect-[4/5] bg-slate-950">
                   <img
-                    src="/yash-profile.jpg"
+                    src={yashProfileImg}
                     alt="Yash Panjwani"
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                   />
