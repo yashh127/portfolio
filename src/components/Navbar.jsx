@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Shield, Terminal as TerminalIcon, Menu, X, Lock, Activity, Sun, Moon } from 'lucide-react';
+import { Shield, Terminal as TerminalIcon, Menu, X, Lock, Activity } from 'lucide-react';
 import { PROFILE } from '../data/portfolioData';
 import yashProfileImg from '../assets/yash-profile.jpg';
 
-export default function Navbar({ onOpenTerminal, theme, onToggleTheme }) {
+export default function Navbar({ onOpenTerminal }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -37,12 +37,12 @@ export default function Navbar({ onOpenTerminal, theme, onToggleTheme }) {
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-bold text-slate-100 tracking-wider text-base">Yash Portfolio</span>
-              <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+              <span className="font-bold text-slate-900 tracking-wider text-base">Yash Portfolio</span>
+              <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-mono bg-emerald-500/10 text-emerald-700 border border-emerald-500/20 font-bold">
                 SOC-ENG
               </span>
             </div>
-            <p className="text-xs text-slate-400 font-mono hidden sm:block">TryHackMe Top 1% • LPU B.Tech CSE</p>
+            <p className="text-xs text-slate-600 font-mono hidden sm:block">TryHackMe Top 1% • LPU B.Tech CSE</p>
           </div>
         </a>
 
@@ -53,60 +53,39 @@ export default function Navbar({ onOpenTerminal, theme, onToggleTheme }) {
               key={link.name}
               href={link.href}
               onClick={link.action ? (e) => { e.preventDefault(); link.action(); } : undefined}
-              className="text-xs font-mono tracking-wider text-slate-300 hover:text-emerald-400 transition-colors py-1 flex items-center gap-1.5"
+              className="text-xs font-mono tracking-wider text-slate-800 hover:text-emerald-700 font-semibold transition-colors py-1 flex items-center gap-1.5"
             >
-              {link.name === 'CLI Terminal' && <TerminalIcon className="w-3.5 h-3.5 text-emerald-400" />}
+              {link.name === 'CLI Terminal' && <TerminalIcon className="w-3.5 h-3.5 text-emerald-700" />}
               {link.name}
             </a>
           ))}
         </nav>
 
-        {/* Status Badge, Theme Switcher & CLI Launcher */}
+        {/* Status Badge & CLI Launcher */}
         <div className="hidden sm:flex items-center gap-3">
           
-          {/* Theme Toggle Button */}
-          <button
-            onClick={onToggleTheme}
-            className="p-2 rounded-xl glass-card border border-slate-700 text-slate-300 hover:text-emerald-400 hover:border-emerald-500/40 transition-all flex items-center justify-center shadow-sm"
-            title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
-          >
-            {theme === 'dark' ? (
-              <Sun className="w-4 h-4 text-amber-400" />
-            ) : (
-              <Moon className="w-4 h-4 text-cyan-400" />
-            )}
-          </button>
-
-          <div className="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-800 text-xs font-mono text-slate-300">
+          <div className="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100 border border-slate-300 text-xs font-mono text-slate-800">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-600 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
             </span>
-            <span className="text-emerald-400 font-semibold">{PROFILE.status}</span>
+            <span className="text-emerald-700 font-bold">{PROFILE.status}</span>
           </div>
 
           <button
             onClick={onOpenTerminal}
-            className="px-4 py-2 rounded-lg bg-emerald-500/10 border border-emerald-500/40 text-emerald-300 text-xs font-mono hover:bg-emerald-500/20 hover:border-emerald-400 hover:shadow-[0_0_20px_rgba(16,185,129,0.25)] transition-all flex items-center gap-2"
+            className="px-4 py-2 rounded-lg bg-emerald-600/10 border border-emerald-600/40 text-emerald-700 text-xs font-mono font-bold hover:bg-emerald-600/20 hover:border-emerald-600 hover:shadow-[0_0_20px_rgba(5,150,105,0.25)] transition-all flex items-center gap-2"
           >
-            <TerminalIcon className="w-4 h-4 text-emerald-400" />
+            <TerminalIcon className="w-4 h-4 text-emerald-700" />
             <span>Launch CLI Shell</span>
           </button>
         </div>
 
-        {/* Mobile Menu Toggle & Theme Button */}
+        {/* Mobile Menu Toggle */}
         <div className="flex sm:hidden items-center gap-2">
           <button
-            onClick={onToggleTheme}
-            className="p-2 rounded-lg glass-card border border-slate-700 text-slate-300 text-xs font-mono"
-            title="Toggle Theme"
-          >
-            {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-cyan-400" />}
-          </button>
-
-          <button
             onClick={onOpenTerminal}
-            className="p-2 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono"
+            className="p-2 rounded-lg bg-emerald-600/10 border border-emerald-600/30 text-emerald-700 text-xs font-mono font-bold"
             title="Launch Terminal"
           >
             <TerminalIcon className="w-4 h-4" />
@@ -114,7 +93,7 @@ export default function Navbar({ onOpenTerminal, theme, onToggleTheme }) {
           
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-lg bg-slate-800/80 border border-slate-700 text-slate-300 hover:text-white"
+            className="p-2 rounded-lg bg-slate-100 border border-slate-300 text-slate-800 hover:text-black"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -124,7 +103,7 @@ export default function Navbar({ onOpenTerminal, theme, onToggleTheme }) {
 
       {/* Mobile Dropdown */}
       {mobileMenuOpen && (
-        <div className="lg:hidden glass-nav border-t border-slate-800 px-4 pt-3 pb-6 mt-3 space-y-2">
+        <div className="lg:hidden glass-nav border-t border-slate-300 px-4 pt-3 pb-6 mt-3 space-y-2">
           {navLinks.map((link) => (
             <a
               key={link.name}
@@ -133,7 +112,7 @@ export default function Navbar({ onOpenTerminal, theme, onToggleTheme }) {
                 if (link.action) link.action();
                 setMobileMenuOpen(false);
               }}
-              className="block px-3 py-2 rounded-lg text-sm font-mono text-slate-300 hover:text-emerald-400 hover:bg-slate-800/50"
+              className="block px-3 py-2 rounded-lg text-sm font-mono text-slate-800 font-semibold hover:text-emerald-700 hover:bg-slate-100"
             >
               {link.name}
             </a>
