@@ -12,17 +12,19 @@ export default function Terminal({ isOpen, onClose }) {
   ]);
   const [isScanning, setIsScanning] = useState(false);
   const [isMaximized, setIsMaximized] = useState(false);
-  const endOfTerminalRef = useRef(null);
+  const terminalLogsRef = useRef(null);
 
+  // Scroll ONLY the internal terminal console window, NOT the browser page!
   useEffect(() => {
-    endOfTerminalRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (terminalLogsRef.current) {
+      terminalLogsRef.current.scrollTop = terminalLogsRef.current.scrollHeight;
+    }
   }, [history, isScanning]);
 
   const handleCommand = (cmdText) => {
     const trimmed = cmdText.trim().toLowerCase();
     if (!trimmed) return;
 
-    // Add command to history
     const newHistory = [...history, { type: 'command', text: cmdText }];
 
     if (trimmed === 'clear') {
@@ -119,7 +121,10 @@ Nmap done: 1 IP address (1 host up) scanned in 1.42 seconds.`
           </div>
 
           {/* Terminal Console Output Body */}
-          <div className="p-4 sm:p-6 bg-slate-950/95 font-mono text-xs sm:text-sm h-[380px] sm:h-[450px] overflow-y-auto space-y-3 leading-relaxed text-slate-200">
+          <div
+            ref={terminalLogsRef}
+            className="p-4 sm:p-6 bg-slate-950/95 font-mono text-xs sm:text-sm h-[380px] sm:h-[450px] overflow-y-auto space-y-3 leading-relaxed text-slate-200"
+          >
             {history.map((item, idx) => (
               <div key={idx}>
                 {item.type === 'system' && (
@@ -148,8 +153,6 @@ Nmap done: 1 IP address (1 host up) scanned in 1.42 seconds.`
                 <span>Scanning 127.0.0.1 ports (SYN Packet Probing)...</span>
               </div>
             )}
-
-            <div ref={endOfTerminalRef} />
           </div>
 
           {/* Command Prompt Input Bar */}
