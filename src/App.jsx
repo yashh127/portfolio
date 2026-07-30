@@ -34,7 +34,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col selection:bg-emerald-500/20 selection:text-emerald-900">
+    <div className="min-h-screen bg-[#080c14] text-slate-100 flex flex-col selection:bg-emerald-500/30 selection:text-emerald-300">
       <Navbar onOpenTerminal={scrollToTerminal} />
       <main className="flex-1">
         <Hero onOpenTerminal={scrollToTerminal} onOpenPGP={scrollToContact} />
