@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Terminal from './components/Terminal';
@@ -11,6 +11,14 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 export default function App() {
+  // Guarantee browser opens at the very top (Hero section) on load/refresh
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  }, []);
+
   const scrollToTerminal = () => {
     const termEl = document.getElementById('terminal');
     if (termEl) {
