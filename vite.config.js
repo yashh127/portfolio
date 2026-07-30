@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/portfolio/',
+  base: './', // Relative base path ensures images load on any domain/subpath!
   plugins: [
     react(),
     tailwindcss()
