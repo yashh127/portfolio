@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Shield, Terminal as TerminalIcon, Menu, X, Lock, Activity } from 'lucide-react';
+import { Shield, Terminal as TerminalIcon, Menu, X, Lock, Activity, Sun, Moon } from 'lucide-react';
 import { PROFILE } from '../data/portfolioData';
 import yashProfileImg from '../assets/yash-profile.jpg';
 
-export default function Navbar({ onOpenTerminal }) {
+export default function Navbar({ onOpenTerminal, theme, onToggleTheme }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -47,7 +47,7 @@ export default function Navbar({ onOpenTerminal }) {
         </a>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-5">
+        <nav className="hidden lg:flex items-center gap-5">
           {navLinks.map((link) => (
             <a
               key={link.name}
@@ -61,9 +61,23 @@ export default function Navbar({ onOpenTerminal }) {
           ))}
         </nav>
 
-        {/* Status Badge & CLI Launcher */}
-        <div className="hidden lg:flex items-center gap-4">
-          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-800 text-xs font-mono text-slate-300">
+        {/* Status Badge, Theme Switcher & CLI Launcher */}
+        <div className="hidden sm:flex items-center gap-3">
+          
+          {/* Theme Toggle Button */}
+          <button
+            onClick={onToggleTheme}
+            className="p-2 rounded-xl glass-card border border-slate-700 text-slate-300 hover:text-emerald-400 hover:border-emerald-500/40 transition-all flex items-center justify-center shadow-sm"
+            title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
+          >
+            {theme === 'dark' ? (
+              <Sun className="w-4 h-4 text-amber-400" />
+            ) : (
+              <Moon className="w-4 h-4 text-cyan-400" />
+            )}
+          </button>
+
+          <div className="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/80 border border-slate-800 text-xs font-mono text-slate-300">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
@@ -80,8 +94,16 @@ export default function Navbar({ onOpenTerminal }) {
           </button>
         </div>
 
-        {/* Mobile Menu Toggle */}
-        <div className="flex md:hidden items-center gap-2">
+        {/* Mobile Menu Toggle & Theme Button */}
+        <div className="flex sm:hidden items-center gap-2">
+          <button
+            onClick={onToggleTheme}
+            className="p-2 rounded-lg glass-card border border-slate-700 text-slate-300 text-xs font-mono"
+            title="Toggle Theme"
+          >
+            {theme === 'dark' ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-cyan-400" />}
+          </button>
+
           <button
             onClick={onOpenTerminal}
             className="p-2 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono"
@@ -102,7 +124,7 @@ export default function Navbar({ onOpenTerminal }) {
 
       {/* Mobile Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden glass-nav border-t border-slate-800 px-4 pt-3 pb-6 mt-3 space-y-2">
+        <div className="lg:hidden glass-nav border-t border-slate-800 px-4 pt-3 pb-6 mt-3 space-y-2">
           {navLinks.map((link) => (
             <a
               key={link.name}
@@ -116,10 +138,6 @@ export default function Navbar({ onOpenTerminal }) {
               {link.name}
             </a>
           ))}
-          <div className="pt-2 flex items-center gap-2 text-xs font-mono text-slate-400 px-3">
-            <Activity className="w-4 h-4 text-emerald-400 animate-pulse" />
-            <span>Status: <strong className="text-emerald-400">{PROFILE.status}</strong></span>
-          </div>
         </div>
       )}
     </header>

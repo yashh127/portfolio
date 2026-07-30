@@ -11,6 +11,19 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 export default function App() {
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('cyber-theme') || 'dark';
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('cyber-theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+  };
+
   // Guarantee browser opens at the very top (Hero section) on load/refresh
   useEffect(() => {
     if ('scrollRestoration' in window.history) {
@@ -35,7 +48,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#080c14] text-slate-100 flex flex-col selection:bg-emerald-500/30 selection:text-emerald-300">
-      <Navbar onOpenTerminal={scrollToTerminal} />
+      <Navbar onOpenTerminal={scrollToTerminal} theme={theme} onToggleTheme={toggleTheme} />
       <main className="flex-1">
         <Hero onOpenTerminal={scrollToTerminal} onOpenPGP={scrollToContact} />
         <Terminal />
