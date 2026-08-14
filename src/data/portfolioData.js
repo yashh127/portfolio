@@ -1,7 +1,7 @@
 export const PROFILE = {
   name: "Yash Panjwani",
   title: "Cybersecurity & Security Operations Engineer",
-  subTitle: "SOC Specialist • Threat Hunter • Security Automation Engineer",
+  subTitle: "SOC Level 1 Certified • Threat Hunter • Security Automation Engineer",
   location: "Lovely Professional University | Phagwara, Punjab & Mathura, UP",
   status: "OPERATIONAL (TryHackMe Top 1%)",
   securityClearance: "B.Tech CSE Undergrad ('23-'27)",
@@ -191,6 +191,15 @@ export const INCIDENT_CASE_STUDY = {
 
 export const CERTIFICATIONS = [
   {
+    id: "thm-soc-level-1",
+    name: "SOC Level 1 Learning Path | TryHackMe",
+    issuer: "TryHackMe",
+    status: "Verified (65h 29m)",
+    date: "Aug 14, 2026",
+    badgeColor: "emerald",
+    desc: "Comprehensive defensive security training covering SIEM monitoring, log analysis, phishing triage, memory forensics, incident response playbooks, and threat intelligence."
+  },
+  {
     id: "tryhackme-ai-sec",
     name: "AI Security | TryHackMe",
     issuer: "TryHackMe",
@@ -253,6 +262,11 @@ export const ACHIEVEMENTS = [
     badge: "130+ Day Streak"
   },
   {
+    title: "SOC Level 1 Learning Path Certified",
+    desc: "Completed 65+ hours of hands-on Security Operations Center (SOC) analysis, SIEM triage, and incident response.",
+    badge: "65+ Hours Practical"
+  },
+  {
     title: "150+ LeetCode Problem Solved",
     desc: "Demonstrated strong algorithmic problem-solving skills across data structures, dynamic programming, and logic.",
     badge: "150+ Solved"
@@ -293,7 +307,7 @@ export const TERMINAL_COMMANDS = {
   skills       - Print technical skills, tools & programming languages
   projects     - List key projects with GitHub URLs
   soc-lab      - Detailed breakdown of A.E.G.I.S. & Wazuh SIEM lab
-  certs        - Show all 6 verified security & computer science certs
+  certs        - Show verified certs (Including THM SOC Level 1 - 65h 29m)
   achieve      - View TryHackMe Top 1%, LeetCode 150+, & Gold Badge stats
   edu          - Display education (Lovely Professional University B.Tech)
   nmap [target]- Run simulated port scanner on 127.0.0.1
@@ -301,7 +315,7 @@ export const TERMINAL_COMMANDS = {
   contact      - Display Yash's email, phone, LinkedIn & GitHub
   clear        - Clear terminal screen`,
 
-  whoami: `Yash Panjwani | Cybersecurity & Security Operations Engineer
+  whoami: `Yash Panjwani | Cybersecurity Operations Engineer (SOC Level 1 Certified)
 Status: OPERATIONAL (TryHackMe Top 1% • 130+ Day Streak)
 Education: B.Tech Computer Science & Engineering @ Lovely Professional University ('23-'27)
 GitHub: https://github.com/yashh127`,
@@ -309,7 +323,7 @@ GitHub: https://github.com/yashh127`,
   skills: `=== YASH PANJWANI'S SKILLS MATRIX ===
 [+] Languages: Python, C/C++, SQL, Bash, HTML/CSS/JS
 [+] Tools    : Wazuh, Splunk, Wireshark, Snort, YARA, Autopsy, Nmap, Linux, AWS, Docker, MySQL
-[+] Security : SIEM, Incident Response, Active Directory, Network Security, MITRE ATT&CK`,
+[+] Security : SIEM Triage, SOC L1 Analysis, Incident Response, Active Directory, MITRE ATT&CK`,
 
   projects: `=== YASH PANJWANI'S FEATURED PROJECTS & GITHUB LINKS ===
 1. Home SOC Lab & A.E.G.I.S. Cyber Ops Platform
@@ -326,6 +340,7 @@ SIEM Engine -> Wazuh Cluster + Custom Detection Rules
 Rules Authored -> Kerberoasting (T1558.003), Mimikatz LSASS Dump (T1003.001)`,
 
   certs: `=== YASH PANJWANI'S CERTIFICATIONS ===
+[✓] SOC Level 1 Learning Path | TryHackMe (Aug '26 - 65h 29m) [ID: THM-FYZC19LIH2]
 [✓] AI Security | TryHackMe (Jul '26)
 [✓] Cybersecurity 101 | TryHackMe (Jul '26)
 [✓] Pre Security | TryHackMe (Mar '26)
@@ -335,6 +350,7 @@ Rules Authored -> Kerberoasting (T1558.003), Mimikatz LSASS Dump (T1003.001)`,
 
   achieve: `=== ACHIEVEMENTS & STATS ===
 [★] TryHackMe : Top 1% Globally with 130+ Day Streak
+[★] Certified  : TryHackMe SOC Level 1 Learning Path (65 Hours 29 Minutes)
 [★] LeetCode   : 150+ Data Structures & Algorithmic Problems Solved
 [★] HackerRank : Gold Level Badge`,
 
